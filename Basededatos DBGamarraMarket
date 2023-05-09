@@ -1,0 +1,74 @@
+/Crear una base de datos dbGamarraMarket/
+DROP DATABASE IF EXISTS dbGamarraMarket;
+CREATE DATABASE dbGamarraMarket
+DEFAULT CHARACTER SET  utf8;
+ 
+ USE dbGamarraMarket;
+ 
+ CREATE TABLE CLIENTE (
+    Id int,
+    Tipo_documento char(3),
+    Numero_documento char(15),
+    Nombres varchar(60),
+    Apellidos varchar(90),
+    Email varchar(80),
+    Celular char(9),
+    Fecha_nacimiento date,
+    Activo bool,
+    CONSTRAINT CLIENTE_pk PRIMARY KEY (Id)
+);
+
+CREATE TABLE PRENDA (
+    id int,
+    descripcion varchar(90),
+    marca varchar(60),
+    cantidad int,
+    talla varchar(10),
+    precio decimal(8,2),
+    activo bool,
+    CONSTRAINT PRENDA_pk PRIMARY KEY (id)
+);
+
+CREATE TABLE VENDEDOR (
+    Id int,
+    Tipo_documento char(3),
+    Numero_documento char(15),
+    Nombres varchar(60),
+    Apellidos varchar(90),
+    Salario decimal(8,2),
+    Celular char(9),
+    Email varchar(80),
+    Activo bool,
+    CONSTRAINT VENDEDOR_pk PRIMARY KEY (Id)
+);
+CREATE TABLE VENTA (
+    id int,
+    fecha_hora datetime,
+    activo bool,
+    CLIENTE_Id int,
+    VENDEDOR_Id int,
+    CONSTRAINT VENTA_pk PRIMARY KEY (id)
+);
+CREATE TABLE VENTA_DETALLE (
+    id int,
+    cantidad int,
+    VENTA_id int,
+    PRENDA_id int,
+    CONSTRAINT VENTA_DETALLE_pk PRIMARY KEY (id)
+);
+ALTER TABLE VENTA 
+ADD CONSTRAINT VENTA_CLIENTE 
+FOREIGN KEY VENTA_CLIENTE (CLIENTE_Id)
+    REFERENCES CLIENTE (Id);
+ALTER TABLE VENTA_DETALLE 
+ADD CONSTRAINT VENTA_DETALLE_PRENDA 
+FOREIGN KEY VENTA_DETALLE_PRENDA (PRENDA_id)
+    REFERENCES PRENDA (id);
+ALTER TABLE VENTA_DETALLE 
+ADD CONSTRAINT VENTA_DETALLE_VENTA 
+FOREIGN KEY VENTA_DETALLE_VENTA (VENTA_id)
+    REFERENCES VENTA (id);
+ALTER TABLE VENTA 
+ADD CONSTRAINT VENTA_VENDEDOR 
+FOREIGN KEY VENTA_VENDEDOR (VENDEDOR_Id)
+    REFERENCES VENDEDOR (Id);
