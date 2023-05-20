@@ -1,0 +1,30 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 1 may. 2023, 21:03:34
+    Author     : jasg1
+*/
+
+.imagen{
+    background: linear-gradient(rgba(5,7,12,0.75),rgba(5,7,12,0.75)),
+        url(img/web1.png) no-repeat center center fixed;
+    width: 1870px;
+    height: 800px;
+}
+
+.imagen h2 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.imagen p {
+    text-align: center;
+    color: #ffffff;
+}
+
+.medida{
+    width: 570px;
+    height: 350px;
+}
